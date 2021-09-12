@@ -1,13 +1,17 @@
+{-# LANGUAGE NoImplicitPrelude #-}
+
 module DataAbstract.Set.Tree
   ( mkSet,
     elementOfSet,
     adjoin,
     union,
     intersect,
+    lookup,
   )
 where
 
 import qualified DataAbstract.Set.OrderedList as OL
+import Prelude hiding (lookup)
 
 data Tree a
   = Null
@@ -60,3 +64,11 @@ intersect x y = listToTree $ OL.intersection (treeToList x) (treeToList y)
 
 union :: (Ord a) => Tree a -> Tree a -> Tree a
 union x y = listToTree $ OL.union (treeToList x) (treeToList y)
+
+lookup :: (Ord a) => a -> Tree a -> Maybe a
+lookup _ Null = Nothing
+lookup a (Branch v l r) =
+  case compare a v of
+    LT -> lookup a l
+    EQ -> Just v
+    GT -> lookup a r
