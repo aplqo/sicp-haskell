@@ -1,0 +1,12 @@
+name:                sicp-exercises
+version:             0.1.0.0
+
+extra-source-files:
+- README.md
+- ChangeLog.md
+
+dependencies:
+- base >= 4.7 && < 5
+
+library:
+  source-dirs: src
