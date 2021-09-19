@@ -1,4 +1,4 @@
-module Differentiation.Deriv where
+module DataAbstract.Differentiation.Deriv where
 
 import DataAbstract.Differentiation.Exponent
 import DataAbstract.Differentiation.Support.Expr
